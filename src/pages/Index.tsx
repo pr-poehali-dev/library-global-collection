@@ -37,12 +37,26 @@ interface Review {
   date: string;
 }
 
+interface Chapter {
+  id: number;
+  title: string;
+  content: string;
+}
+
+interface BookContent {
+  bookId: number;
+  chapters: Chapter[];
+}
+
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenre, setSelectedGenre] = useState('Все');
   const [activeTab, setActiveTab] = useState('catalog');
   const [newNote, setNewNote] = useState('');
   const [selectedBook, setSelectedBook] = useState<number | null>(null);
+  const [readingBook, setReadingBook] = useState<number | null>(null);
+  const [currentChapter, setCurrentChapter] = useState(0);
+  const [bookmarks, setBookmarks] = useState<{bookId: number, chapter: number, position: number}[]>([]);
 
   const books: Book[] = [
     // Классика XIX века
@@ -690,6 +704,126 @@ const Index = () => {
     }
   ];
 
+  // Содержание книг (демо-версии первых глав)
+  const bookContents: BookContent[] = [
+    {
+      bookId: 1,
+      chapters: [
+        {
+          id: 1,
+          title: 'Том первый. Часть первая. Глава I',
+          content: `— Eh bien, mon prince, Gênes et Lucques ne sont plus que des apanages, des поместья, de la famille Buonaparte. Non, je vous préviens, que si vous ne me dites pas que nous avons la guerre, si vous vous permettez encore de pallier toutes les infamies, toutes les atrocités de cet Antichrist (ma parole, j'y crois) — je ne vous connais plus, vous n'êtes plus mon ami, vous n'êtes plus мой верный раб, comme vous dites.
+
+Так говорила в июле 1805 года известная Анна Павловна Шерер, фрейлина и приближенная императрицы, встречая важного и чиновного князя Василия, первого приехавшего на ее вечер.
+
+Анна Павловна кашляла несколько дней, у неё был грипп, как она говорила (грипп был тогда новое слово, употреблявшееся только редкими).
+
+— Ах, какая прелестная женщина эта Анна Павловна! — подумал князь Василий.
+
+Князь Василий был человек государственный, один из тех придворных людей, которые раз навсегда выбирают направление и потом уже никогда не изменяют его. Его направление было поклонение власти, и власть была для него не отвлеченным понятием блага государственного, а конкретной возможностью для него и его семьи получать ордена, деньги, отличия.`
+        },
+        {
+          id: 2,
+          title: 'Том первый. Часть первая. Глава II',
+          content: `— Если здоровье позволит, — сказал князь. — У вас нынче большой вечер?
+
+— Нет, очень маленький. Только самые необходимые люди, — сказала Анна Павловна, обдумывая свой вечер. — Мортмарт будет, и аббат. Вы знаете аббата? Он очень интересный человек.
+
+— А! это тот жесткий человек? Я его не знаю лично, но много слышал. Говорят, что он очень учен.
+
+— Да, это необыкновенный ум. Он такой глубокий, высокий... Вы знаете, иногда люди слишком умны для того, чтобы их можно было понимать. Это тот случай.
+
+— А! — с сомнением проговорил князь Василий. — Он говорит, что Buonaparte большой человек.
+
+— Боже мой! — в ужасе воскликнула Анна Павловна. — Как вы можете, князь! Что он говорит такое! Ah! mon prince, vous me donnez de la peine. Я не знала, что вы буонапартист.`
+        }
+      ]
+    },
+    {
+      bookId: 21,
+      chapters: [
+        {
+          id: 1,
+          title: 'Глава 1. Никогда не разговаривайте с неизвестными',
+          content: `В час жаркого весеннего заката на Патриарших прудах появились два гражданина. Первый из них, одетый в летнюю серенькую пару, был маленького роста, упитан, лыс, свою приличную шляпу пирожком нес в руке, а на хорошо выбритом лице его помещались сверхъестественных размеров очки в черной роговой оправе. Второй – плечистый, рыжеватый, вихрастый молодой человек в заломленной на затылок клетчатой кепке – был в ковбойке, жеваных белых брюках и в черных тапочках.
+
+Первый был не кто иной, как Михаил Александрович Берлиоз, председатель правления одной из крупнейших московских литературных ассоциаций, сокращенно именуемой МАССОЛИТ, и редактор толстого художественного журнала, а молодой спутник его – поэт Иван Николаевич Понырев, пишущий под псевдонимом Бездомный.
+
+Попав в тень чуть зеленеющих лип, писатели первым долгом бросились к пестро раскрашенной будочке с надписью «Пиво и воды».`
+        },
+        {
+          id: 2,
+          title: 'Глава 2. Понтий Пилат',
+          content: `В белом плаще с кровавым подбоем, шаркающей кавалерийской походкой, ранним утром четырнадцатого числа весеннего месяца нисана в крытую колоннаду между двумя крыльями дворца Ирода Великого вышел прокуратор Иудеи Понтий Пилат.
+
+Более всего на свете прокуратор ненавидел запах розового масла, и все теперь предвещало нехороший день, так как запах этот начал преследовать прокуратора с рассвета.
+
+Прокуратору казалось, что розовый запах источают кипарисы и пальмы в саду, что к запаху кожи и конвоя примешивается проклятая розовая струя. От флигелей в тылу дворца, где расположилась первая когорта двенадцатого молниеносного легиона, заносило дымком в колоннаду через верхнюю площадку сада, и к этому дымку подмешивался все тот же жирный розовый дух.`
+        }
+      ]
+    },
+    {
+      bookId: 7,
+      chapters: [
+        {
+          id: 1,
+          title: 'Глава первая',
+          content: `«Мой дядя самых честных правил,
+Когда не в шутку занемог,
+Он уважать себя заставил
+И лучше выдумать не мог.
+Его пример другим наука;
+Но, боже мой, какая скука
+С больным сидеть и день и ночь,
+Не отходя ни шагу прочь!
+Какое низкое коварство
+Полуживого забавлять,
+Ему подушки поправлять,
+Печально подносить лекарство,
+Вздыхать и думать про себя:
+Когда же черт возьмет тебя!»
+
+Так думал молодой повеса,
+Летя в пыли на почтовых,
+Всевышней волею Зевеса
+Наследник всех своих родных.
+Друзья Людмилы и Руслана!
+С героем моего романа
+Без предисловий, сей же час
+Позвольте познакомить вас:
+Онегин, добрый мой приятель,
+Родился на брегах Невы,
+Где, может быть, родились вы
+Или блистали, мой читатель;
+Там некогда гулял и я:
+Но вреден север для меня.`
+        }
+      ]
+    },
+    {
+      bookId: 23,
+      chapters: [
+        {
+          id: 1,
+          title: 'Глава I',
+          content: `Была январская вьюжная ночь. Профессор Филипп Филиппович Преображенский в шубе на черно-бурой лисе и в каракулевой шапке влетел в свой подъезд, отряхиваясь. В вестибюле кальсонами вниз висел разорванный на клочья жилец Шариков, и через стеклянную дверь был виден калабуховский швейцар в синей поддевке, валяющийся на полу среди осколков разбитого графина. Оба были мертвецки пьяны.
+
+— О боже мой! — воскликнул профессор. — Опять какая-то история. Дарья Петровна, — крикнул он, — идите сюда немедленно!
+
+Из недр квартиры, из прихожей появилась женщина в белом переднике.
+
+— Ах, Филипп Филиппович, наконец-то вы приехали! А я уж думала...
+
+— Что случилось еще?
+
+— Ах, до чего же мерзко! Представьте себе, сегодня утром являются всякие... Я уж и не знаю, кто они такие... То ли жильцы, то ли не жильцы... в кожаных куртках...
+
+— А-а... М-да... Понятно. И что же?`
+        }
+      ]
+    }
+  ];
+
   const genres = [
     'Все', 'Классика', 'Поэзия', 'Историческая проза', 'Повесть', 
     'Сатира', 'Драматургия', 'Социальная проза', 'Фантастика', 'Эпопея', 
@@ -730,6 +864,33 @@ const Index = () => {
     }
   };
 
+  const openReader = (bookId: number) => {
+    setReadingBook(bookId);
+    setCurrentChapter(0);
+    setActiveTab('reader');
+  };
+
+  const closeReader = () => {
+    setReadingBook(null);
+    setActiveTab('catalog');
+  };
+
+  const addBookmark = () => {
+    if (readingBook) {
+      setBookmarks(prev => [...prev, { bookId: readingBook, chapter: currentChapter, position: 0 }]);
+    }
+  };
+
+  const getCurrentBookContent = () => {
+    if (!readingBook) return null;
+    return bookContents.find(content => content.bookId === readingBook);
+  };
+
+  const getCurrentBook = () => {
+    if (!readingBook) return null;
+    return books.find(book => book.id === readingBook);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/30">
       {/* Header */}
@@ -764,6 +925,16 @@ const Index = () => {
               <Icon name="StickyNote" size={16} />
               <span>Заметки</span>
             </Button>
+            {readingBook && (
+              <Button
+                variant="outline"
+                onClick={closeReader}
+                className="flex items-center space-x-2"
+              >
+                <Icon name="X" size={16} />
+                <span>Закрыть чтение</span>
+              </Button>
+            )}
           </nav>
         </div>
       </header>
@@ -860,6 +1031,28 @@ const Index = () => {
                             <p className="text-muted-foreground text-xs">{review.text}</p>
                           </div>
                         ))}
+                    </div>
+                    <div className="flex gap-2 pt-2">
+                      <Button 
+                        size="sm" 
+                        className="flex-1"
+                        onClick={() => openReader(book.id)}
+                        disabled={!bookContents.find(content => content.bookId === book.id)}
+                      >
+                        <Icon name="BookOpen" size={14} className="mr-1" />
+                        Читать
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        variant="outline"
+                        onClick={() => {
+                          setSelectedBook(book.id);
+                          setActiveTab('notes');
+                        }}
+                      >
+                        <Icon name="Plus" size={14} className="mr-1" />
+                        Заметка
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -973,6 +1166,115 @@ const Index = () => {
                 );
               })}
             </div>
+          </TabsContent>
+
+          {/* Reader */}
+          <TabsContent value="reader" className="space-y-0">
+            {readingBook && (
+              <div className="fixed inset-0 bg-background z-50 flex flex-col">
+                {/* Reader Header */}
+                <div className="flex items-center justify-between p-4 border-b border-border/40 bg-background/95 backdrop-blur">
+                  <div className="flex items-center space-x-3">
+                    <Button variant="ghost" size="sm" onClick={closeReader}>
+                      <Icon name="ArrowLeft" size={18} />
+                    </Button>
+                    <div>
+                      <h2 className="font-semibold text-lg">{getCurrentBook()?.title}</h2>
+                      <p className="text-sm text-muted-foreground">{getCurrentBook()?.author}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Button variant="outline" size="sm" onClick={addBookmark}>
+                      <Icon name="Bookmark" size={16} className="mr-1" />
+                      Закладка
+                    </Button>
+                    <Button variant="outline" size="sm">
+                      <Icon name="Settings" size={16} />
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Chapter Navigation */}
+                {getCurrentBookContent() && getCurrentBookContent()!.chapters.length > 1 && (
+                  <div className="flex items-center justify-between p-4 bg-muted/20 border-b border-border/20">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setCurrentChapter(Math.max(0, currentChapter - 1))}
+                      disabled={currentChapter === 0}
+                    >
+                      <Icon name="ChevronLeft" size={16} className="mr-1" />
+                      Предыдущая
+                    </Button>
+                    <div className="text-center">
+                      <p className="text-sm font-medium">
+                        {getCurrentBookContent()?.chapters[currentChapter]?.title}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {currentChapter + 1} из {getCurrentBookContent()?.chapters.length}
+                      </p>
+                    </div>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setCurrentChapter(Math.min(getCurrentBookContent()!.chapters.length - 1, currentChapter + 1))}
+                      disabled={currentChapter === getCurrentBookContent()!.chapters.length - 1}
+                    >
+                      Следующая
+                      <Icon name="ChevronRight" size={16} className="ml-1" />
+                    </Button>
+                  </div>
+                )}
+
+                {/* Reading Content */}
+                <div className="flex-1 overflow-auto">
+                  <div className="max-w-3xl mx-auto p-6">
+                    <div className="prose prose-lg max-w-none">
+                      <h1 className="text-2xl font-bold mb-6 text-center">
+                        {getCurrentBookContent()?.chapters[currentChapter]?.title}
+                      </h1>
+                      <div className="text-base leading-relaxed whitespace-pre-line">
+                        {getCurrentBookContent()?.chapters[currentChapter]?.content}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Reader Controls */}
+                <div className="flex items-center justify-center p-4 border-t border-border/40 bg-background/95 backdrop-blur">
+                  <div className="flex items-center space-x-4">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setCurrentChapter(Math.max(0, currentChapter - 1))}
+                      disabled={currentChapter === 0}
+                    >
+                      <Icon name="SkipBack" size={16} />
+                    </Button>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-sm">{currentChapter + 1}</span>
+                      <div className="w-32 h-2 bg-muted rounded-full">
+                        <div 
+                          className="h-full bg-primary rounded-full transition-all" 
+                          style={{ 
+                            width: `${((currentChapter + 1) / (getCurrentBookContent()?.chapters.length || 1)) * 100}%` 
+                          }}
+                        />
+                      </div>
+                      <span className="text-sm">{getCurrentBookContent()?.chapters.length || 0}</span>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setCurrentChapter(Math.min(getCurrentBookContent()!.chapters.length - 1, currentChapter + 1))}
+                      disabled={currentChapter === getCurrentBookContent()!.chapters.length - 1}
+                    >
+                      <Icon name="SkipForward" size={16} />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            )}
           </TabsContent>
         </Tabs>
       </main>
