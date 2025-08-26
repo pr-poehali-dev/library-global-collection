@@ -1,38 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Georgia:wght@400;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Теплые домашние тона для библиотеки */
+    --background: 45 50% 97%; /* кремово-белый */
+    --foreground: 30 15% 15%; /* темно-коричневый для текста */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 45 30% 95%; /* светло-кремовый */
+    --card-foreground: 30 15% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 45 30% 95%;
+    --popover-foreground: 30 15% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 30 75% 35%; /* теплый коричневый D2691E */
+    --primary-foreground: 45 50% 97%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 40 60% 70%; /* песочный F4A460 */
+    --secondary-foreground: 30 15% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 45 20% 90%;
+    --muted-foreground: 30 10% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 35 70% 50%; /* медный */
+    --accent-foreground: 45 50% 97%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 40 15% 85%;
+    --input: 40 15% 90%;
+    --ring: 30 75% 35%;
 
-    --radius: 0.5rem;
+    --radius: 12px;
 
     --sidebar-background: 0 0% 98%;
 
@@ -96,6 +98,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-serif;
+    font-family: "Georgia", serif;
   }
 }
