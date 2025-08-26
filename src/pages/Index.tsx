@@ -45,6 +45,7 @@ const Index = () => {
   const [selectedBook, setSelectedBook] = useState<number | null>(null);
 
   const books: Book[] = [
+    // Классика XIX века
     {
       id: 1,
       title: 'Война и мир',
@@ -59,46 +60,10 @@ const Index = () => {
     },
     {
       id: 2,
-      title: 'Мастер и Маргарита',
-      author: 'Михаил Булгаков',
-      genre: 'Фантастика',
-      rating: 4.9,
-      reviews: 1925,
-      description: 'Роман о любви, добре и зле в советской Москве',
-      year: 1967,
-      pages: 480,
-      isFavorite: false
-    },
-    {
-      id: 3,
-      title: 'Преступление и наказание',
-      author: 'Федор Достоевский',
-      genre: 'Классика',
-      rating: 4.7,
-      reviews: 3521,
-      description: 'Психологический роман о моральных дилеммах',
-      year: 1866,
-      pages: 671,
-      isFavorite: true
-    },
-    {
-      id: 4,
-      title: 'Гарри Поттер и философский камень',
-      author: 'Дж. К. Роулинг',
-      genre: 'Фэнтези',
-      rating: 4.6,
-      reviews: 5632,
-      description: 'Первая книга о юном волшебнике Гарри Поттере',
-      year: 1997,
-      pages: 223,
-      isFavorite: false
-    },
-    {
-      id: 5,
       title: 'Анна Каренина',
       author: 'Лев Толстой',
       genre: 'Классика',
-      rating: 4.5,
+      rating: 4.7,
       reviews: 2156,
       description: 'История трагической любви в дворянском обществе',
       year: 1877,
@@ -106,16 +71,522 @@ const Index = () => {
       isFavorite: false
     },
     {
-      id: 6,
-      title: '1984',
-      author: 'Джорж Оруэлл',
-      genre: 'Антиутопия',
-      rating: 4.8,
-      reviews: 4891,
-      description: 'Роман-предупреждение о тоталитарном обществе',
-      year: 1949,
-      pages: 328,
+      id: 3,
+      title: 'Преступление и наказание',
+      author: 'Федор Достоевский',
+      genre: 'Классика',
+      rating: 4.9,
+      reviews: 3521,
+      description: 'Психологический роман о моральных дилеммах и искуплении',
+      year: 1866,
+      pages: 671,
       isFavorite: true
+    },
+    {
+      id: 4,
+      title: 'Братья Карамазовы',
+      author: 'Федор Достоевский',
+      genre: 'Классика',
+      rating: 4.8,
+      reviews: 1892,
+      description: 'Философский роман о вере, сомнениях и семейных тайнах',
+      year: 1880,
+      pages: 840,
+      isFavorite: false
+    },
+    {
+      id: 5,
+      title: 'Идиот',
+      author: 'Федор Достоевский',
+      genre: 'Классика',
+      rating: 4.6,
+      reviews: 1654,
+      description: 'Роман о князе Мышкине - "положительно прекрасном человеке"',
+      year: 1869,
+      pages: 640,
+      isFavorite: false
+    },
+    {
+      id: 6,
+      title: 'Бесы',
+      author: 'Федор Достоевский',
+      genre: 'Классика',
+      rating: 4.5,
+      reviews: 1234,
+      description: 'Политический роман о революционном движении в России',
+      year: 1872,
+      pages: 768,
+      isFavorite: false
+    },
+    {
+      id: 7,
+      title: 'Евгений Онегин',
+      author: 'Александр Пушкин',
+      genre: 'Поэзия',
+      rating: 4.7,
+      reviews: 3245,
+      description: 'Роман в стихах о "лишнем человеке" русского дворянства',
+      year: 1833,
+      pages: 384,
+      isFavorite: true
+    },
+    {
+      id: 8,
+      title: 'Капитанская дочка',
+      author: 'Александр Пушкин',
+      genre: 'Историческая проза',
+      rating: 4.5,
+      reviews: 2876,
+      description: 'Исторический роман о пугачевском восстании',
+      year: 1836,
+      pages: 128,
+      isFavorite: false
+    },
+    {
+      id: 9,
+      title: 'Пиковая дама',
+      author: 'Александр Пушкин',
+      genre: 'Повесть',
+      rating: 4.6,
+      reviews: 1987,
+      description: 'Мистическая повесть о страсти к азартным играм',
+      year: 1834,
+      pages: 64,
+      isFavorite: false
+    },
+    {
+      id: 10,
+      title: 'Герой нашего времени',
+      author: 'Михаил Лермонтов',
+      genre: 'Классика',
+      rating: 4.5,
+      reviews: 2453,
+      description: 'Роман о "лишнем человеке" Печорине',
+      year: 1840,
+      pages: 192,
+      isFavorite: false
+    },
+    {
+      id: 11,
+      title: 'Мертвые души',
+      author: 'Николай Гоголь',
+      genre: 'Сатира',
+      rating: 4.4,
+      reviews: 1876,
+      description: 'Сатирическая поэма о похождениях Чичикова',
+      year: 1842,
+      pages: 352,
+      isFavorite: false
+    },
+    {
+      id: 12,
+      title: 'Ревизор',
+      author: 'Николай Гоголь',
+      genre: 'Драматургия',
+      rating: 4.6,
+      reviews: 2134,
+      description: 'Комедия о чиновничьем произволе и взяточничестве',
+      year: 1836,
+      pages: 128,
+      isFavorite: false
+    },
+    {
+      id: 13,
+      title: 'Шинель',
+      author: 'Николай Гоголь',
+      genre: 'Повесть',
+      rating: 4.5,
+      reviews: 1567,
+      description: 'Повесть о "маленьком человеке" Акакии Башмачкине',
+      year: 1842,
+      pages: 48,
+      isFavorite: false
+    },
+    {
+      id: 14,
+      title: 'Отцы и дети',
+      author: 'Иван Тургенев',
+      genre: 'Классика',
+      rating: 4.3,
+      reviews: 1892,
+      description: 'Роман о конфликте поколений и нигилизме',
+      year: 1862,
+      pages: 256,
+      isFavorite: false
+    },
+    {
+      id: 15,
+      title: 'Дворянское гнездо',
+      author: 'Иван Тургенев',
+      genre: 'Классика',
+      rating: 4.2,
+      reviews: 1234,
+      description: 'Роман о любви и судьбе русского дворянства',
+      year: 1859,
+      pages: 224,
+      isFavorite: false
+    },
+    {
+      id: 16,
+      title: 'Рудин',
+      author: 'Иван Тургенев',
+      genre: 'Классика',
+      rating: 4.1,
+      reviews: 987,
+      description: 'Первый роман Тургенева о "лишнем человеке"',
+      year: 1856,
+      pages: 160,
+      isFavorite: false
+    },
+    {
+      id: 17,
+      title: 'Обломов',
+      author: 'Иван Гончаров',
+      genre: 'Классика',
+      rating: 4.4,
+      reviews: 1654,
+      description: 'Роман о русской лени и "обломовщине"',
+      year: 1859,
+      pages: 512,
+      isFavorite: false
+    },
+    {
+      id: 18,
+      title: 'Что делать?',
+      author: 'Николай Чернышевский',
+      genre: 'Социальная проза',
+      rating: 4.0,
+      reviews: 876,
+      description: 'Роман о "новых людях" и социальных идеалах',
+      year: 1863,
+      pages: 384,
+      isFavorite: false
+    },
+    {
+      id: 19,
+      title: 'Гроза',
+      author: 'Александр Островский',
+      genre: 'Драматургия',
+      rating: 4.3,
+      reviews: 1567,
+      description: 'Драма о купеческих нравах и женской судьбе',
+      year: 1859,
+      pages: 96,
+      isFavorite: false
+    },
+    {
+      id: 20,
+      title: 'Бесприданница',
+      author: 'Александр Островский',
+      genre: 'Драматургия',
+      rating: 4.4,
+      reviews: 1345,
+      description: 'Драма о трагической судьбе девушки без приданого',
+      year: 1879,
+      pages: 128,
+      isFavorite: false
+    },
+    // Литература XX века
+    {
+      id: 21,
+      title: 'Мастер и Маргарита',
+      author: 'Михаил Булгаков',
+      genre: 'Фантастика',
+      rating: 4.9,
+      reviews: 5432,
+      description: 'Роман о любви, добре и зле в советской Москве',
+      year: 1967,
+      pages: 480,
+      isFavorite: true
+    },
+    {
+      id: 22,
+      title: 'Белая гвардия',
+      author: 'Михаил Булгаков',
+      genre: 'Историческая проза',
+      rating: 4.6,
+      reviews: 2134,
+      description: 'Роман о семье Турбиных в революционном Киеве',
+      year: 1925,
+      pages: 320,
+      isFavorite: false
+    },
+    {
+      id: 23,
+      title: 'Собачье сердце',
+      author: 'Михаил Булгаков',
+      genre: 'Сатира',
+      rating: 4.8,
+      reviews: 3456,
+      description: 'Сатирическая повесть об эксперименте профессора Преображенского',
+      year: 1925,
+      pages: 128,
+      isFavorite: true
+    },
+    {
+      id: 24,
+      title: 'Доктор Живаго',
+      author: 'Борис Пастернак',
+      genre: 'Классика',
+      rating: 4.5,
+      reviews: 2876,
+      description: 'Роман о судьбе интеллигенции в эпоху революций',
+      year: 1957,
+      pages: 672,
+      isFavorite: false
+    },
+    {
+      id: 25,
+      title: 'Тихий Дон',
+      author: 'Михаил Шолохов',
+      genre: 'Эпопея',
+      rating: 4.7,
+      reviews: 1987,
+      description: 'Эпопея о донском казачестве в эпоху войн и революций',
+      year: 1940,
+      pages: 1504,
+      isFavorite: false
+    },
+    {
+      id: 26,
+      title: 'Поднятая целина',
+      author: 'Михаил Шолохов',
+      genre: 'Соцреализм',
+      rating: 4.2,
+      reviews: 1234,
+      description: 'Роман о коллективизации на Дону',
+      year: 1932,
+      pages: 704,
+      isFavorite: false
+    },
+    {
+      id: 27,
+      title: 'Архипелаг ГУЛАГ',
+      author: 'Александр Солженицын',
+      genre: 'Документальная проза',
+      rating: 4.8,
+      reviews: 3421,
+      description: 'Художественно-документальное исследование репрессивной системы СССР',
+      year: 1973,
+      pages: 1872,
+      isFavorite: true
+    },
+    {
+      id: 28,
+      title: 'Один день Ивана Денисовича',
+      author: 'Александр Солженицын',
+      genre: 'Документальная проза',
+      rating: 4.6,
+      reviews: 2345,
+      description: 'Повесть об одном дне заключенного в сталинском лагере',
+      year: 1962,
+      pages: 128,
+      isFavorite: false
+    },
+    {
+      id: 29,
+      title: 'В круге первом',
+      author: 'Александр Солженицын',
+      genre: 'Документальная проза',
+      rating: 4.7,
+      reviews: 1876,
+      description: 'Роман о судьбах заключенных в "шарашке"',
+      year: 1968,
+      pages: 768,
+      isFavorite: false
+    },
+    {
+      id: 30,
+      title: 'Мы',
+      author: 'Евгений Замятин',
+      genre: 'Антиутопия',
+      rating: 4.5,
+      reviews: 2987,
+      description: 'Роман-антиутопия о тоталитарном государстве будущего',
+      year: 1924,
+      pages: 224,
+      isFavorite: false
+    },
+    {
+      id: 31,
+      title: 'Котлован',
+      author: 'Андрей Платонов',
+      genre: 'Философская проза',
+      rating: 4.4,
+      reviews: 1456,
+      description: 'Повесть-притча о строительстве "общепролетарского дома"',
+      year: 1930,
+      pages: 160,
+      isFavorite: false
+    },
+    {
+      id: 32,
+      title: 'Чевенгур',
+      author: 'Андрей Платонов',
+      genre: 'Философская проза',
+      rating: 4.3,
+      reviews: 1123,
+      description: 'Роман о поисках коммунизма в русской провинции',
+      year: 1929,
+      pages: 416,
+      isFavorite: false
+    },
+    {
+      id: 33,
+      title: 'А зори здесь тихие...',
+      author: 'Борис Васильев',
+      genre: 'Военная проза',
+      rating: 4.8,
+      reviews: 4321,
+      description: 'Повесть о подвиге девушек-зенитчиц в годы войны',
+      year: 1969,
+      pages: 224,
+      isFavorite: true
+    },
+    {
+      id: 34,
+      title: 'В списках не значился',
+      author: 'Борис Васильев',
+      genre: 'Военная проза',
+      rating: 4.7,
+      reviews: 2876,
+      description: 'Роман о защитнике Брестской крепости',
+      year: 1974,
+      pages: 256,
+      isFavorite: false
+    },
+    {
+      id: 35,
+      title: 'Они сражались за Родину',
+      author: 'Михаил Шолохов',
+      genre: 'Военная проза',
+      rating: 4.6,
+      reviews: 2134,
+      description: 'Роман о Великой Отечественной войне',
+      year: 1959,
+      pages: 416,
+      isFavorite: false
+    },
+    {
+      id: 36,
+      title: 'Судьба человека',
+      author: 'Михаил Шолохов',
+      genre: 'Военная проза',
+      rating: 4.7,
+      reviews: 3456,
+      description: 'Рассказ о солдате, прошедшем плен и потерявшем семью',
+      year: 1957,
+      pages: 64,
+      isFavorite: false
+    },
+    // Современная литература
+    {
+      id: 37,
+      title: 'Кысь',
+      author: 'Татьяна Толстая',
+      genre: 'Постапокалипсис',
+      rating: 4.3,
+      reviews: 1987,
+      description: 'Роман о России после ядерной катастрофы',
+      year: 2000,
+      pages: 384,
+      isFavorite: false
+    },
+    {
+      id: 38,
+      title: 'Зулейха открывает глаза',
+      author: 'Гузель Яхина',
+      genre: 'Современная проза',
+      rating: 4.6,
+      reviews: 5432,
+      description: 'Роман о судьбе татарской женщины в 1930-е годы',
+      year: 2015,
+      pages: 512,
+      isFavorite: true
+    },
+    {
+      id: 39,
+      title: 'Дети мои',
+      author: 'Гузель Яхина',
+      genre: 'Современная проза',
+      rating: 4.4,
+      reviews: 2876,
+      description: 'Роман о немецком учителе в послевоенном Казахстане',
+      year: 2018,
+      pages: 496,
+      isFavorite: false
+    },
+    {
+      id: 40,
+      title: 'Лавр',
+      author: 'Евгений Водолазкин',
+      genre: 'Современная проза',
+      rating: 4.5,
+      reviews: 3214,
+      description: 'Роман о средневековом лекаре и его духовном пути',
+      year: 2013,
+      pages: 440,
+      isFavorite: false
+    },
+    {
+      id: 41,
+      title: 'Авиатор',
+      author: 'Евгений Водолазкин',
+      genre: 'Современная проза',
+      rating: 4.3,
+      reviews: 1876,
+      description: 'Роман о человеке, очнувшемся после долгого забвения',
+      year: 2016,
+      pages: 416,
+      isFavorite: false
+    },
+    {
+      id: 42,
+      title: 'Тель-Авив',
+      author: 'Дина Рубина',
+      genre: 'Современная проза',
+      rating: 4.4,
+      reviews: 2134,
+      description: 'Роман о художнице, переехавшей в Израиль',
+      year: 2015,
+      pages: 512,
+      isFavorite: false
+    },
+    {
+      id: 43,
+      title: 'Почерк Леонардо',
+      author: 'Дина Рубина',
+      genre: 'Современная проза',
+      rating: 4.2,
+      reviews: 1567,
+      description: 'Роман о женщине-левше и ее необычном даре',
+      year: 2008,
+      pages: 464,
+      isFavorite: false
+    },
+    {
+      id: 44,
+      title: 'Обитель',
+      author: 'Захар Прилепин',
+      genre: 'Историческая проза',
+      rating: 4.6,
+      reviews: 2876,
+      description: 'Роман о Соловецком лагере особого назначения',
+      year: 2014,
+      pages: 752,
+      isFavorite: false
+    },
+    {
+      id: 45,
+      title: 'Санькя',
+      author: 'Захар Прилепин',
+      genre: 'Современная проза',
+      rating: 4.1,
+      reviews: 1234,
+      description: 'Роман о молодом революционере начала XXI века',
+      year: 2006,
+      pages: 320,
+      isFavorite: false
     }
   ];
 
@@ -147,15 +618,84 @@ const Index = () => {
     },
     {
       id: 2,
-      bookId: 2,
+      bookId: 21,
       author: 'Михаил П.',
       rating: 5,
       text: 'Булгаков создал невероятный мир, где реальность переплетается с мистикой.',
       date: '2024-08-10'
+    },
+    {
+      id: 3,
+      bookId: 3,
+      author: 'Екатерина С.',
+      rating: 5,
+      text: 'Достоевский гениально показал внутренний мир человека, совершившего преступление.',
+      date: '2024-08-12'
+    },
+    {
+      id: 4,
+      bookId: 7,
+      author: 'Дмитрий В.',
+      rating: 5,
+      text: 'Пушкин - наше всё! Онегин актуален и сегодня.',
+      date: '2024-08-08'
+    },
+    {
+      id: 5,
+      bookId: 23,
+      author: 'Ольга М.',
+      rating: 5,
+      text: 'Сатира Булгакова остается острой спустя век. Шариков живёт среди нас!',
+      date: '2024-08-05'
+    },
+    {
+      id: 6,
+      bookId: 27,
+      author: 'Александр Т.',
+      rating: 5,
+      text: 'Важнейшее произведение XX века. Каждый должен прочитать.',
+      date: '2024-07-30'
+    },
+    {
+      id: 7,
+      bookId: 33,
+      author: 'Мария Н.',
+      rating: 5,
+      text: 'Плачу каждый раз, когда перечитываю. Подвиг этих девочек нельзя забыть.',
+      date: '2024-08-01'
+    },
+    {
+      id: 8,
+      bookId: 38,
+      author: 'Айгуль К.',
+      rating: 5,
+      text: 'Яхина потрясающе описала судьбу татарской женщины. Очень пронзительно.',
+      date: '2024-07-25'
+    },
+    {
+      id: 9,
+      bookId: 40,
+      author: 'Владимир Р.',
+      rating: 4,
+      text: 'Водолазкин создал удивительный роман о времени и вечности.',
+      date: '2024-07-20'
+    },
+    {
+      id: 10,
+      bookId: 11,
+      author: 'Елена П.',
+      rating: 4,
+      text: 'Гоголь мастерски высмеял пороки российской действительности.',
+      date: '2024-07-15'
     }
   ];
 
-  const genres = ['Все', 'Классика', 'Фантастика', 'Фэнтези', 'Антиутопия'];
+  const genres = [
+    'Все', 'Классика', 'Поэзия', 'Историческая проза', 'Повесть', 
+    'Сатира', 'Драматургия', 'Социальная проза', 'Фантастика', 'Эпопея', 
+    'Соцреализм', 'Документальная проза', 'Антиутопия', 'Философская проза',
+    'Военная проза', 'Постапокалипсис', 'Современная проза'
+  ];
 
   const filteredBooks = books.filter(book => {
     const matchesSearch = book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
